@@ -1,7 +1,9 @@
 class StudentsController < ApplicationController
 
+  has_scope :active
+  
   def index
-    render :json => Student.all.order(:name)
+    render :json => apply_scopes(Student.all).order(:name)
   end
   
   def create    

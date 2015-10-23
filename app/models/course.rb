@@ -1,5 +1,11 @@
 class Course < ActiveRecord::Base
   
-  validates :name, :description, :status, :presence => true
+  has_many :classrooms, :dependent => :destroy
+  
+  validates :name, :description, :status, :presence => true  
+  
+  scope :active, lambda { | status |
+    where("status = 0")    
+  }
   
 end

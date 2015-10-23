@@ -4,6 +4,7 @@ app.factory('CoursesService', function($resource) {
         save: {method: 'POST'},
         show: {method: 'GET'},        
         update: {method: 'PUT'},
-        remove: {method: 'DELETE'}
+        remove: {method: 'DELETE'},
+        active: {method: 'GET', isArray: true, params: {active: true}}
     });
 });

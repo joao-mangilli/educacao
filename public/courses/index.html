@@ -35,7 +35,7 @@
         <tr data-ng-repeat="course in courses">          
           <td>{{course.name}}</td>
           <td>{{course.description}}</td>
-          <td>{{course.status}}</td>
+          <td>{{status_humanize(course.status)}}</td>
           <td>
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#new" data-ng-click="edit(course.id)">
@@ -69,7 +69,10 @@
                 </div>
                 <div class="form-group">
                   <label for="status">Situação</label>
-                  <input data-ng-required="true" type="text" class="form-control" id="status" placeholder="Informe a situação do curso" data-ng-model="course.status">
+                  <select class="form-control" id="status" data-ng-model="course.status" data-ng-required="true" placeholder="Informe a situação do curso">
+                    <option value="0">Ativo</option>
+                    <option value="1">Inativo</option>
+                  </select>
                 </div>
             </div>
             <div class="modal-footer">

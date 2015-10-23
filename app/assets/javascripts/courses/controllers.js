@@ -16,6 +16,7 @@ app.controller('CoursesCtrl', function ($scope, CoursesService, $timeout) {
     
     $scope.new = function() {
         $scope.course = {};
+        $scope.course.status = 0;
     };
     
     $scope.methodSave = function() {
@@ -96,6 +97,14 @@ app.controller('CoursesCtrl', function ($scope, CoursesService, $timeout) {
             );
         }
     };    
+    
+    $scope.status_humanize = function(status) {
+        if (status === 0) {
+            return 'Ativo';
+        }
+        
+        return 'Inativo';
+    };
 
     function clearAlert(time) {
         if (time) {

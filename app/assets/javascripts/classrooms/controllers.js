@@ -1,4 +1,5 @@
-app.controller('ClassRoomsCtrl', function ($scope, ClassRoomsService, $timeout) {
+app.controller('ClassRoomsCtrl', function ($scope, ClassRoomsService, $timeout,
+                                        CoursesService, StudentsService) {
     
     $scope.index = function() {
         ClassRoomsService.index(
@@ -15,7 +16,9 @@ app.controller('ClassRoomsCtrl', function ($scope, ClassRoomsService, $timeout) 
     };
     
     $scope.new = function() {
-        $scope.course = {};
+        $scope.classroom = {};
+        
+        getDependents();
     };
     
     $scope.methodSave = function() {
@@ -45,7 +48,7 @@ app.controller('ClassRoomsCtrl', function ($scope, ClassRoomsService, $timeout) 
         );
     };
 
-    $scope.edit = function(id) {
+    $scope.edit = function(id) {        
         ClassRoomsService.show({id: id},
             function(data) {
                 $scope.classroom = data;
@@ -57,6 +60,8 @@ app.controller('ClassRoomsCtrl', function ($scope, ClassRoomsService, $timeout) 
                 clearAlert();
             }
         );
+
+        getDependents();
     };  
     
     $scope.update = function(id) {
@@ -79,8 +84,8 @@ app.controller('ClassRoomsCtrl', function ($scope, ClassRoomsService, $timeout) 
     };
 
     $scope.remove = function(id) {
-        if (confirm('Realmente deseja excluir o curso ' + id + '?')) {
-            CoursesService.remove({id: id},
+        if (confirm('Realmente deseja excluir a matrícula ' + id + '?')) {
+            ClassRoomsService.remove({id: id},
                 function() {
                     $scope.index();
 
@@ -96,6 +101,15 @@ app.controller('ClassRoomsCtrl', function ($scope, ClassRoomsService, $timeout) 
             );
         }
     };    
+    
+    function getDependents() {
+        CoursesService.active(function(data) {
+            $scope.courses = data;
+        });
+        StudentsService.active(function(data) {
+            $scope.students = data;
+        });
+    }
 
     function clearAlert(time) {
         if (time) {

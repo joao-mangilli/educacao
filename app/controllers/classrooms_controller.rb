@@ -1,12 +1,12 @@
 class ClassroomsController < ApplicationController
 
   def index
-    render :json => Classrooms.all.order(:name)
+    render :json => Classrooms.all
   end
   
   def create    
     @classroom = Classrooms.new(classroom)
-    
+        
     if @classroom.save
       render :json => @classroom
     else
@@ -41,7 +41,7 @@ class ClassroomsController < ApplicationController
   private
   
   def classroom
-    params.require(:classroom).permit(:name, :register_number, :status)
+    params.require(:classroom).permit(:student_id, :course_id, :entry_at)
   end
     
 end

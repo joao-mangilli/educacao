@@ -4,6 +4,6 @@ app.factory('ClassRoomsService', function($resource) {
         save: {method: 'POST'},
         show: {method: 'GET'},        
         update: {method: 'PUT'},
-        remove: {method: 'DELETE'}
+        remove: {method: 'DELETE'}        
     });
 });

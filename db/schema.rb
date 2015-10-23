@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022232025) do
+ActiveRecord::Schema.define(version: 20151023012937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "classrooms", force: true do |t|
-    t.integer  "students_id", null: false
-    t.integer  "courses_id",  null: false
-    t.datetime "entry_at",    null: false
+    t.integer  "student_id", null: false
+    t.integer  "course_id",  null: false
+    t.datetime "entry_at",   null: false
   end
 
-  add_index "classrooms", ["courses_id"], name: "index_classrooms_on_courses_id", using: :btree
-  add_index "classrooms", ["students_id"], name: "index_classrooms_on_students_id", using: :btree
+  add_index "classrooms", ["course_id"], name: "index_classrooms_on_course_id", using: :btree
+  add_index "classrooms", ["student_id"], name: "index_classrooms_on_student_id", using: :btree
 
   create_table "courses", force: true do |t|
     t.string  "name",        limit: 45, null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20151022232025) do
     t.integer "status",                     null: false
   end
 
-  add_foreign_key "classrooms", "courses", name: "classrooms_courses_id_fk", column: "courses_id"
-  add_foreign_key "classrooms", "students", name: "classrooms_students_id_fk", column: "students_id"
+  add_foreign_key "classrooms", "courses", name: "classrooms_course_id_fk"
+  add_foreign_key "classrooms", "students", name: "classrooms_student_id_fk"
 
 end

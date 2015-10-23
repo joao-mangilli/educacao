@@ -33,9 +33,9 @@
 
     <tbody>
         <tr data-ng-repeat="classroom in classrooms">          
-          <td>{{classroom.name}}</td>
-          <td>{{classroom.description}}</td>
-          <td>{{classroom.status}}</td>
+          <td>{{classroom.student.name}}</td>
+          <td>{{classroom.course.description}}</td>
+          <td>{{classroom.entry_at | date:'dd/MM/yyyy HH:mm:ss'}}</td>
           <td>
             <div class="btn-group" role="group">
               <button type="button" class="btn btn-default" data-toggle="modal" data-target="#new" data-ng-click="edit(classroom.id)">
@@ -60,16 +60,20 @@
         <form data-ng-submit="methodSave()" name="form">
             <div class="modal-body">
                 <div class="form-group">
-                  <label for="name">Nome</label>
-                  <input data-ng-required="true" type="text" class="form-control" id="name" placeholder="Digite o nome do curso" data-ng-model="course.name">
+                  <label for="student">Estudante</label>
+                  <select class="form-control" id="student" data-ng-model="classroom.student_id" data-ng-required="true" placeholder="Informe o estudante">
+                    <option data-ng-repeat="student in students" value="{{student.id}}">{{student.name}}</option>                    
+                  </select>                  
                 </div>
                 <div class="form-group">
-                  <label for="description">Descrição</label>
-                  <input data-ng-required="true" type="text" class="form-control" id="description" placeholder="Digite a descrição do curso" data-ng-model="course.description">
+                  <label for="course">Curso</label>
+                  <select class="form-control" id="course" data-ng-model="classroom.course_id" data-ng-required="true" placeholder="Informe o curso">
+                    <option data-ng-repeat="course in courses" value="{{course.id}}">{{course.name}}</option>                    
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="status">Situação</label>
-                  <input data-ng-required="true" type="text" class="form-control" id="status" placeholder="Informe a situação do curso" data-ng-model="course.status">
+                  <label for="entry_at">Data da matrícula</label>
+                  <input data-ng-required="true" type="datetime" class="form-control" id="entry_at" placeholder="Digite a data da matrícula" data-ng-model="classroom.entry_at">
                 </div>
             </div>
             <div class="modal-footer">
