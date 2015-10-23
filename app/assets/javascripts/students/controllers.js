@@ -1,4 +1,4 @@
-app.controller('StudentsCtrl', function ($scope, StudentsService, $timeout) {
+app.controller('StudentsCtrl', ['$scope', 'StudentsService', '$timeout', function ($scope, StudentsService, $timeout) {
     
     $scope.index = function() {
         StudentsService.index(
@@ -125,4 +125,4 @@ app.controller('StudentsCtrl', function ($scope, StudentsService, $timeout) {
 
     init();
 
-});
+}]);

@@ -1,4 +1,4 @@
-app.factory('CoursesService', function($resource) {
+app.factory('CoursesService', ['$resource', function($resource) {
     return $resource('/api/courses/:id', {}, {
         index: {method: 'GET', isArray: true},
         save: {method: 'POST'},
@@ -7,4 +7,4 @@ app.factory('CoursesService', function($resource) {
         remove: {method: 'DELETE'},
         active: {method: 'GET', isArray: true, params: {active: true}}
     });
-});
+}]);
