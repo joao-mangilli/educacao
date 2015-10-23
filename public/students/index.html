@@ -7,21 +7,19 @@
     <p>{{alert.success}}</p>
   </div>
 
-  <div class="row-fluid">
-    <div class="span6">
+  <div class="row">
+    <div class="col-md-6">
       <h2>Estudantes</h2>  
     </div>
       
-    <div class="span6">      
-      <button class="btn btn-success" data-toggle="modal" data-target="#new" data-ng-click="new()">
+    <div class="col-md-6">      
+      <button class="btn btn-success pull-right" data-toggle="modal" data-target="#new" style="margin-top: 20px; margin-bottom: 10px;" data-ng-click="new()">
         <i class="glyphicon glyphicon-plus"></i> Adicionar
       </button>
     </div>
-  </div>      
-  
-  <hr>
+  </div>        
 
-  <table class="table">
+  <table class="table table-bordered table-striped">
     <thead>
         <tr>            
             <th width="50%">Nome</th>
