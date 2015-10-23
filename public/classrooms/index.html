@@ -34,7 +34,7 @@
     <tbody>
         <tr data-ng-repeat="classroom in classrooms">          
           <td>{{classroom.student.name}}</td>
-          <td>{{classroom.course.description}}</td>
+          <td>{{classroom.course.name}}</td>
           <td>{{classroom.entry_at | date:'dd/MM/yyyy HH:mm:ss'}}</td>
           <td>
             <div class="btn-group" role="group">
@@ -62,7 +62,7 @@
                 <div class="form-group">
                   <label for="student">Estudante</label>
                   <select class="form-control" id="student" data-ng-model="classroom.student_id" data-ng-required="true" placeholder="Informe o estudante">
-                    <option data-ng-repeat="student in students" value="{{student.id}}">{{student.name}}</option>                    
+                    <option data-ng-repeat="student in students" ng-selected="student.id === classroom.student_id" value="{{student.id}}">{{student.name}}</option>                    
                   </select>                  
                 </div>
                 <div class="form-group">

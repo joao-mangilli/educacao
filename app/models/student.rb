@@ -1,6 +1,6 @@
 class Student < ActiveRecord::Base
 
-  has_many :classrooms, :dependent => :destroy
+  has_many :classrooms, :class_name => 'Classrooms', :dependent => :destroy
 
   validates :name, :register_number, :status, :presence => true
 

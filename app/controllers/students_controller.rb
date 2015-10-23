@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
   def destroy
     @student = Student.find(params[:id])
     
-    if @student.delete
+    if @student.destroy
       render :json => @student
     else
       render :json => { erros: @student.errors }, :status => :bad_request
