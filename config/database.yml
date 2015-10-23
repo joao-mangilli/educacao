@@ -15,3 +15,11 @@ test:
   pool: 5
   username: root
   password: "123"
+    
+production:  
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: educacao_production
+  username: educacao
+  password: <%= ENV['EDUCACAO_DATABASE_PASSWORD'] %>
