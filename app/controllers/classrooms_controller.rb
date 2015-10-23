@@ -1,7 +1,7 @@
 class ClassroomsController < ApplicationController
 
   def index
-    render :json => Classrooms.all
+    render :json => Classrooms.all.order(:id)
   end
   
   def create    

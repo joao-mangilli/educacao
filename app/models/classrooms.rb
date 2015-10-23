@@ -8,7 +8,7 @@ class Classrooms < ActiveRecord::Base
     {
       :student => student,
       :course => course,
-      :entry_at => entry_at,
+      :entry_at => entry_at.strftime("%Y-%m-%dT%H:%M:%S"),
       :id => id,
       :student_id => student_id,
       :course_id => course_id
